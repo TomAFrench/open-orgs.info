@@ -1,4 +1,5 @@
 import io from 'socket.io-client'
+import { PortfolioItem } from 'data/adapters/types';
 
 const BASE_URL = 'wss://api-v4.zerion.io/'
 
@@ -76,7 +77,7 @@ export class Zerion {
     return portfolio.payload.portfolio.total_value
   }
 
-  async getPortfolio(address: string | string[]): Promise<any> {
+  async getPortfolio(address: string | string[]): Promise<PortfolioItem[]> {
     const payload = address instanceof Array
       ? { addresses: (address as string[]).map((address: string) => address.toLowerCase()) }
       : { address: address.toString().toLowerCase() }
