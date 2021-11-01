@@ -96,6 +96,8 @@ export class Zerion {
         icon: asset.asset.icon_url,
         price: asset.asset.price?.value,
         value: asset.quantity / (10 ** asset.asset.decimals) * (asset.asset.price?.value || 0),
+        native: false,
+        vesting: false,
       }))
       .filter((asset: any) => !!asset.price)
     return result
