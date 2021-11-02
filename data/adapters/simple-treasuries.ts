@@ -306,7 +306,7 @@ const orgs: Org[] = [
       }`
       const { proposals } = await sdk.graph.query('arr00/uniswap-governance-v3', query);
       return proposals.map((proposal: any) => ({
-        title: proposal.description.split(/\n|  /)[0],
+        title: proposal.description.split(/\n| {2}/)[0],
         start: proposal.creationTime,
         state: proposal.status,
         link: `https://app.uniswap.org/#/vote/${proposal.id.replace('.', '/')}`,
