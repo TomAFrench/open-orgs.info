@@ -8,6 +8,18 @@
     "type-check": "tsc",
     "lint": "eslint . --ext ts --ext tsx --ext js"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn run type-check"
+    }
+  },
+  "lint-staged": {
+    "*.@(ts|tsx)": [
+      "yarn lint",
+      "yarn format"
+    ]
+  },
   "dependencies": {
     "@cryptostats/sdk": "^0.0.29",
     "@types/socket.io-client": "^1.4.36",
@@ -33,6 +45,7 @@
     "eslint": "^8.1.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-react": "^7.26.1",
+    "husky": "^7.0.4",
     "typescript": "^4.4.2"
   },
   "license": "MIT"
